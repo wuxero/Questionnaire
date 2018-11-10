@@ -1,0 +1,98 @@
+logging:
+  config: config/logback.xml
+olsfile:
+  path: D:/OLS_File
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/quesyionnaire?useSSL=false&serverTimezone=GMT-8
+    username: root
+    password: 970603
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 300000
+      auto-commit: false
+      initialization-fail-timeout: 60000
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 10000ms
+    jedis:
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 10
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 100
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 5000ms
+  cache:
+    type: redis
+    caffeine:
+      spec: 50MB
+    redis:
+      time-to-live: 3000ms
+  resources:
+    static-locations: ["classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/","classpath:/public/","file:${olsfile.path}"]
+#  mail:   #邮箱配置
+#    host: smtp.163.com
+#    username: m13839441583@163.com #163邮箱
+#    password:  hyp212655  #动态配置
+#    test-connection: true
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          timeout: 25000
+#          starttls:
+#            enable: true
+  devtools:
+    restart:
+      enabled: true
+  servlet:
+    multipart:
+      location: ${olsfile.path}
+      enabled: true
+      max-file-size: 512MB
+      max-request-size: 512MB
+
+mybatis:
+  type-aliases-package: com.hyp.ques.domain
+  mapper-locations: classpath:mapping/*.xml
+  configuration:
+    cache-enabled: true
+mapper:
+  mappers:
+  - com.hyp.ques.common.Mapper
+  not-empty: false
+  identity: MYSQL
+#pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  row-bounds-with-count: true
+swagger:
+  title: QuestionnaireService
+  description: 在线问卷系统
+  version: 1.1.0.RELEASE
+  license: Apache License, Version 2.0
+  license-url: https://www.apache.org/licenses/LICENSE-2.0.html
+  terms-of-service-url: https://github.com/hanyunpeng0521/questionnaire
+  contact:
+    name: hyp
+    url: https://home.cnblogs.com/u/pingxin/
+    email: 1670787053@qq.com
+  base-package: com.hyp.ols.controller
+  apply-default-response-messages: true
+  ui-config:
+    json-editor: false
+    show-request-headers: true
+    request-timeout: 5000
+  base-path: /**
+#TODO:swagger 参数报warn
+

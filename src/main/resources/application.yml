@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: QuestionnaireService
+server:
+  address: 127.0.0.1
+  port: 8080
+  servlet:
+    path: /
+    application-display-name: QuestionnaireService
+    context-path: /QuestionnaireService
+  ssl:
+    ciphers:
+    enabled: false
+    key-store:
+logging:
+  config: config/logback.xml

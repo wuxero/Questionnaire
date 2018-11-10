@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyp.ques.mapper.ResourceMapper">
+  <resultMap id="BaseResultMap" type="com.hyp.ques.domain.Resource">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="created_date" jdbcType="BIGINT" property="createdDate" />
+    <result column="modified_date" jdbcType="BIGINT" property="modifiedDate" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="relative_path" jdbcType="VARCHAR" property="relativePath" />
+    <result column="save_name" jdbcType="VARCHAR" property="saveName" />
+    <result column="size" jdbcType="BIGINT" property="size" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="md5value" jdbcType="VARCHAR" property="md5value" />
+  </resultMap>
+</mapper>
